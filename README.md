@@ -20,4 +20,4 @@ Teciteca Virtual
 
 1. Informe a senha que lhe foi passada pela coordenação do projeto e aguarde o upload dos arquivos.
 
-1. Acesse http://www2.ifrn.edu.br/teciteca/ usando o navegador de sua preferência.
+1. Acesse https://www2.ifrn.edu.br/teciteca/ usando o navegador de sua preferência.
