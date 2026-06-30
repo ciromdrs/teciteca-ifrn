@@ -12,9 +12,7 @@
 	<!-- Favicons
     ================================================== -->
 	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-	<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="img/apple-touch-icon-72x72.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="img/apple-touch-icon-114x114.png">
+
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -40,9 +38,34 @@
 
 	<!-- Mais estilos -->
 	<style>
-		img.link-externo {
-			max-height: 180px;
-			min-height: 140px;
+		div.item-acervo {
+			margin: 1em;
+			max-width: 25vw;
+			vertical-align: top;
+			display: inline-block;
+			color: var(--azul2)
+		}
+
+		div.item-acervo img {
+			width: 25vw;
+			max-width: 12em;
+			min-width: 5em;
+		}
+
+		div.item-acervo p.caption {
+			font-weight: bold;
+			font-size: large;
+			overflow-wrap: break-word;
+		}
+
+		div.item-acervo p.desc {
+			font-size: normal;
+		}
+
+		div.coluna-alunos {
+			vertical-align: top;
+			display: inline-block;
+			margin: 2em;
 		}
 	</style>
 </head>
@@ -61,6 +84,9 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
+				<a class="navbar-brand" href="https://portal.ifrn.edu.br/">
+					<img style="height: 100%;margin-right: 10px;" src="img/if-logo.png">
+				</a>
 				<a class="navbar-brand" href="index.html">TeciTeca Virtual</a>
 			</div>
 
@@ -69,9 +95,9 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#tf-home" class="page-scroll">Home</a></li>
 					<li><a href="#tf-about" class="page-scroll">Sobre</a></li>
-					<li><a href="#tf-team" class="page-scroll">Equipe</a></li>
 					<li><a href="#materiais" class="page-scroll">Acervo</a></li>
-					<li><a href="#caixa" class="page-scroll">Contato</a></li>
+					<li><a href="#contato" class="page-scroll">Contato</a></li>
+					<li><a href="#equipe" class="page-scroll">Equipe</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
@@ -100,14 +126,14 @@
 				<div class="col-md-6">
 					<div class="about-text">
 						<div class="section-title">
-							<h2><strong>o projeto</strong></h2>
+							<h2><strong>Sobre</strong></h2>
 							<hr>
 							<div class="clearfix"></div>
 						</div>
 
-						<p class="intro">
 						<div style="text-align: justify;">
-							<h5>A Teciteca Virtual é um espaço que compreende um conjunto organizado e catalogado de
+							<p class="intro">A Teciteca Virtual é um espaço que compreende um conjunto organizado e
+								catalogado de
 								materiais têxteis em formato digital e diversos outros assuntos relacionados à área,
 								podendo ser acessado de qualquer dispositivo com acesso à internet. O site pode ser
 								usado como um espaço de ensino e aprendizagem para a academia, pois pode ser utilizado
@@ -120,321 +146,199 @@
 								integrador a videoteca têxtil, com vídeos que demonstram didaticamente os processos
 								têxteis; a catalogação de tecidos; a catalogação de aviamentos; a catalogação das
 								empresas da região. Além disso, espera-se finalizar o site, tornando-o mais limpo e com
-								uma melhor visualização.<h5>
+								uma melhor visualização.
+							</p>
 						</div>
-						</p>
-						<!-- <ul class="about-list">
-                            <li>
-                                <span class="fa fa-dot-circle-o"></span>
-                                <strong>Mission</strong> - <em>We deliver uniqueness and quality</em>
-                            </li>
-                            <li>
-                                <span class="fa fa-dot-circle-o"></span>
-                                <strong>Skills</strong> - <em>Delivering fast and excellent results</em>
-                            </li>
-                            <li>
-                                <span class="fa fa-dot-circle-o"></span>
-                                <strong>Clients</strong> - <em>Satisfied clients thanks to our experience</em>
-                            </li>
-                        </ul> -->
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- Team Page
+	<!-- Services Section
     ==========================================-->
-	<div id="tf-team" class="text-center">
+	<div id="materiais" class="text-center container">
+		<div class="section-title center">
+			<h2><strong>Acervo</strong></h2>
+			<div class="line">
+				<hr>
+			</div>
+		</div>
+		<div>
+			<a href="https://www.youtube.com/channel/UCEbeeMSqjcP7jiYvYBuRX0Q">
+				<div class="item-acervo">
+					<img src="img/icon-youtube.png">
+					<p class="caption">VideoTeca Têxtil</p>
+					<p class="desc">Videos Interativos</p>
+				</div>
+			</a>
+			<a href="https://open.spotify.com/show/62otApEqkKP4M6IreSrW6d">
+				<div class="item-acervo">
+					<img src="img/podcast.jpg">
+					<p class="caption">Tecendo Comentários</p>
+					<p class="desc">Podcast</p>
+				</div>
+			</a>
+			<a href="https://www.instagram.com/tecitecavirtual/">
+				<div class="item-acervo">
+					<img src="img/instagram.png">
+					<p class="caption">@tecitecavirtual</p>
+					<p class="desc">Instagram</p>
+				</div>
+			</a>
+			<a href="https://drive.google.com/drive/folders/1dI2G6_o0qosRzDxEBddu7vEQlliIwPS1">
+				<div class="item-acervo">
+					<img src="img/material-didatico.png">
+					<p class="caption">Materiais Didáticos</p>
+					<p class="desc">Material Completo</p>
+				</div>
+			</a>
+		</div>
+	</div>
+
+	<!-- Contato ====================================== -->
+	<div id="contato" class="text-center">
+		<div class="container">
+			<div class="section-title center">
+				<h2><strong>Contato</strong></h2>
+				<div class="line">
+					<hr>
+				</div>
+			</div>
+			<div>
+				<a href="mailto:teciteca@ifrn.edu.br" alt="enviar e-mail">
+					<button class="icon"><img src="img/email.png" /></button>
+					<span style="font-size: 2em; vertical-align: middle;">teciteca@ifrn.edu.br</span>
+				</a>
+				<!--button class="icon" alt="copiar e-mail"><img src="img/copy.png"/></button-->
+			</div>
+		</div>
+	</div>
+
+	<div id="equipe">
 		<div class="overlay">
 			<div class="container">
-				<div class="section-title center">
+				<div class="section-title center text-center">
 					<h2>Conheça <strong>nossa equipe</strong></h2>
 					<div class="line">
 						<hr>
 					</div>
 				</div>
 
-				<div id="team" class="owl-carousel owl-theme row">
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/tatiana.png" alt="Coordenadora do projeto" class="img-circle team-img">
-							<div class="caption">
-								<h3>Tatiana Ferreira</h3>
-								<p>Coordenadora</p>
-								<p>"Tudo é uma questão de organização."</p>
+				<div class="text-center">
+					<h2><strong>Servidores</strong></h2>
+					<div style="margin: 2em">
+						<div class="item" style="display: inline-block">
+							<div class="thumbnail">
+								<img src="img/team/tatiana.png" alt="Coordenadora do projeto"
+									class="img-circle team-img">
+								<div class="caption">
+									<h3>Tatiana Ferreira</h3>
+									<p>Coordenadora</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/silvio.jpg" alt="Integrante" class="img-circle team-img">
-							<div class="caption">
-								<h3>Silvio Carlos</h3>
-								<p>Integrante - Informática 2m 2015.1</p>
-								<p>"Tudo no seu tempo certo."</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/marcos.jpg" alt="Integrante" class="img-circle team-img">
-							<div class="caption">
-								<h3>Marcos Roberto</h3>
-								<p>Integrante - Têxtil 1M 2015.1 </p>
-								<p>"O que separa os bem-sucedidos dos outros é a persistência."- Lisa M. Amos.</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/felipe.jpg" alt="Integrante" class="img-circle team-img">
-							<div class="caption">
-								<h3>Felipe Eduardo</h3>
-								<p>Integrante - Têxtil 1M 2015.1 </p>
-								<p>"Você não falhará se não subir a montanha. Mas não tem graça nenhuma viver sempre com
-									o pé no chão." </p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/samar.jpg" alt="Integrante" class="img-circle team-img">
-							<div class="caption">
-								<h3>Samara Medeiros</h3>
-								<p>Integrante - Têxtil 1M 2015.1 </p>
-								<p>" Nunca desista de seus objetivos pois pior que a vergonha da derrota é a vergonha de
-									não ter lutado."</p>
-							</div>
-						</div>
-					</div>
 
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/lucas.jpg" alt="Integrante" class="img-circle team-img">
-							<div class="caption">
-								<h3>Lucas Gabriel</h3>
-								<p>Integrante - Têxtil 1M 2015.1 </p>
-								<p>"O êxito é fácil de obter. O difícil é merecê-lo."</p>
+						<div class="item" style="display: inline-block">
+							<div class="thumbnail">
+								<img src="img/team/max-miller.jpg" alt="coorientador" class="img-circle team-img">
+								<div class="caption">
+									<h3>Max Miller</h3>
+									<p>Co-orientador</p>
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/alessandra.jpg" alt="Integrante" class="img-circle team-img">
-							<div class="caption">
-								<h3>Alessandra Lopes Garcia</h3>
-								<p>Integrante - Têxtil 1M 2015.1 </p>
-								<p>"O destino é conhecimento." </p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/eila.jpg" alt="Integrante" class="img-circle team-img">
-							<div class="caption">
-								<h3>Edwiges Martins</h3>
-								<p>Integrante - Têxtil 1M 2015.1 </p>
-								<p>"Se não arriscarmos, não criaremos o futuro." - Monkey D. Luffy</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/igor.jpg" alt="Integrante" class="img-circle team-img">
-							<div class="caption">
-								<h3>Igor Gomes</h3>
-								<p>Integrante - Têxtil 1M 2015.1 </p>
-								<p>"Se quiser se destacar, não seja diferente, seja extraordinário."</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/eduarda.jpg" alt="Integrante" class="img-circle team-img">
-							<div class="caption">
-								<h3>Eduarda Ketlen</h3>
-								<p>Integrante - Têxtil 1M 2015.1 </p>
-								<p>"estude, sonhe, realize!."</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/foto.jpg" alt="Integrante" class="img-circle team-img">
-							<div class="caption">
-								<h3>Ana Regina</h3>
-								<p>Integrante - Têxtil 1M 2015.1 </p>
-								<p>"nunca se faz nada grande sem uma esperança exagerada." - júlio verne</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/horacio.jpg" alt="Integrante" class="img-circle team-img">
-							<div class="caption">
-								<h3>Horácio Estevão</h3>
-								<p>Integrante - Têxtil 1M 2015.1 </p>
-								<p>"blindado o coração, blindada a alma."</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/wallce.jpg" alt="Integrante" class="img-circle team-img">
-							<div class="caption">
-								<h3>Wallace Wiallamy</h3>
-								<p>Integrante - Têxtil 1M 2015.1 </p>
-								<p>"Não espere por oportunidades, as crie."</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/lucas-gabriel.jpg" alt="Bolsista do projeto" class="img-circle team-img">
-							<div class="caption">
-								<h3>Lucas Gabriel</h3>
-								<p>Bolsista</p>
-								<p>"A verdadeira motivação vem de realização, desenvolvimento pessoal, satisfação no
-									trabalho e reconhecimento."</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/uirison.jpg" alt="Bolsista do projeto" class="img-circle team-img">
-							<div class="caption">
-								<h3>Uirison Menezes de Melo</h3>
-								<p>Integrante</p>
-								<p>"O segredo de um grande sucesso esta no trabalho de uma grande equipe."</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/isadora-rodriguez.jpg" alt="Bolsista do projeto"
-								class="img-circle team-img">
-							<div class="caption">
-								<h3>Isadora Rodriguez</h3>
-								<p>Integrante</p>
-								<p>"Nada dura para sempre, mas tudo pode ser renovado."</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/leonidas-miguel.jpg" alt="Bolsista do projeto"
-								class="img-circle team-img">
-							<div class="caption">
-								<h3>Leônidas Miguel bisneto</h3>
-								<p>Integrante</p>
-								<p>"Tudo alcança aquele que trabalha duro enquanto espera."</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/ahs.jpg" alt="Integrante" class="img-circle team-img">
-							<div class="caption">
-								<h3>Marcos Aurélio</h3>
-								<p>Integrante - Têxtil 1M 2015.1</p>
-								<p>"A deformidade do corpo não afeta uma bela alma, mas a formosura da alma reflete-se
-									no corpo."</p>
-							</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="thumbnail">
-							<img src="img/team/max-miller.jpg" alt="coorientador" class="img-circle team-img">
-							<div class="caption">
-								<h3>Max Miller</h3>
-								<p>Co-orientador</p>
+
+						<div class="item" style="display: inline-block">
+							<div class="thumbnail">
+								<img src="img/team/ciro-medeiros.jpeg" alt="integrante" class="img-circle team-img">
+								<div class="caption">
+									<h3>Ciro Medeiros</h3>
+									<p>Integrante</p>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
+				<div>
+					<div class="text-center">
+						<h2><strong>Alunos</strong></h2>
+					</div>
+					<ul id="lista-alunos" style="margin: 2em;">
+						<div class="coluna-alunos">
+							<li>Silvio Carlos<p>Integrante - Informática 2M 2015.1</p>
+							</li>
+							<li>Marcos Roberto<p>Integrante - Têxtil 1M 2015.1</p>
+							</li>
+							<li>Felipe Eduardo<p>Integrante - Têxtil 1M 2015.1</p>
+							</li>
+							<li>Samara Medeiros<p>Integrante - Têxtil 1M 2015.1</p>
+							</li>
+							<li>Lucas Gabriel<p>Integrante - Têxtil 1M 2015.1</p>
+							</li>
+							<li>Alessandra Lopes Garcia<p>Integrante - Têxtil 1M 2015.1</p>
+							</li>
+							<li>Edwiges Martins<p>Integrante - Têxtil 1M 2015.1</p>
+							</li>
+							<li>Igor Gomes<p>Integrante - Têxtil 1M 2015.1</p>
+							</li>
+							<li>Eduarda Ketlen<p>Integrante - Têxtil 1M 2015.1</p>
+							</li>
+						</div>
+						<div class="coluna-alunos">
+							<li>Ana Regina<p>Integrante - Têxtil 1M 2015.1</p>
+							</li>
+							<li>Horácio Estevão<p>Integrante - Têxtil 1M 2015.1</p>
+							</li>
+							<li>Wallace Wiallamy<p>Integrante - Têxtil 1M 2015.1</p>
+							</li>
+							<li>Lucas Gabriel<p>Bolsista</p>
+							</li>
+							<li>Uirison Menezes de Melo<p>Integrante</p>
+							</li>
+							<li>Isadora Rodriguez<p>Integrante</p>
+							</li>
+							<li>Leônidas Miguel bisneto<p>Integrante</p>
+							</li>
+							<li>Marcos Aurélio<p>Integrante - Têxtil 1M 2015.1</p>
+							</li>
+						</div>
+					</ul>
+				</div>
 			</div>
 
+			<footer>
+				Desenvolvido pelo IFRN
+			</footer>
 		</div>
 	</div>
-	<!-- Services Section
-    ==========================================-->
-	<div id="materiais" class="text-center">
-		<div class="container">
-			<div class="section-title center">
-				<h2><strong>Acervo</strong></h2>
-				<div class="line">
-					<hr>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-3 col-sm-3 service">
-					<a href="https://www.youtube.com/channel/UCEbeeMSqjcP7jiYvYBuRX0Q">
-						<img class="link-externo" src="img/icon-youtsube.png">
-					</a>
-					<h4><strong> VideoTeca têxtil</strong></h4>
-					<p>Videos Interativos</p>
-					<p></p>
-				</div>
-				<div class="col-md-3 col-sm-3 service">
-					<a href="https://open.spotify.com/show/62otApEqkKP4M6IreSrW6d">
-						<img class="link-externo" src="img/podcast.jpg">
-					</a>
-					<h4><strong>TECENDO COMENTÁRIOS</strong></h4>
-					<p>Podcast</p>
-					<p></p>
-				</div>
-				<div class="col-md-3 col-sm-3 service">
-					<a href="https://www.instagram.com/tecitecavirtual/">
-						<img class="link-externo" src="img/instagram.png">
-					</a>
-					<h4><strong>@tecitecavirtual</strong></h4>
-					<p>Instagram</p>
-					<p></p>
-				</div>
-				<div class="col-md-3 col-sm-3 service">
-					<a href="https://drive.google.com/drive/folders/1dI2G6_o0qosRzDxEBddu7vEQlliIwPS1">
-						<img class="link-externo" src="img/materia-didatico.png">
-					</a>
-					<h4><strong>Materiais Didáticos</strong></h4>
-					<p>Material Completo</p>
-					<p></p>
-				</div>	
-			</div>
-			
-			<!-- Contact Section
-			==========================================-->
-			<a href="mailto:teciteca@ifrn.edu.br">
-				<img src="img/email.jpg">
-			</a>
-			<h2>teciteca@ifrn.edu.br</h2>
-
-			<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-			<script type="text/javascript" src="js/jquery.1.11.1.js"></script>
-			<!-- Include all compiled plugins (below), or include individual files as needed -->
-			<script type="text/javascript" src="js/bootstrap.js"></script>
-			<script type="text/javascript" src="js/SmoothScroll.js"></script>
-			<script type="text/javascript" src="js/jquery.isotope.js"></script>
-
-			<script src="js/owl.carousel.js"></script>
-
-			<!-- Javascripts
-    ================================================== -->
-			<script type="text/javascript" src="js/main.js"></script>
-
-			<script type="text/javascript" src="js/modernizr.custom.js"></script>
-
-			<!-- Medição de acesso via Google Analytics -->
-			<!-- Google tag (gtag.js) -->
-			<script async src="https://www.googletagmanager.com/gtag/js?id=G-KPTX5BDF04"></script>
-			<script>
-				window.dataLayer = window.dataLayer || [];
-				function gtag() { dataLayer.push(arguments); }
-				gtag('js', new Date());
-				gtag('config', 'G-KPTX5BDF04');
-			</script>
-
 </body>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.1.11.1.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/SmoothScroll.js"></script>
+<script type="text/javascript" src="js/jquery.isotope.js"></script>
+
+<script src="js/owl.carousel.js"></script>
+
+<!-- Scripts
+================================================== -->
+<script type="text/javascript" src="js/main.js"></script>
+
+<script type="text/javascript" src="js/modernizr.custom.js"></script>
+
+<!-- Medição de acesso via Google Analytics -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KPTX5BDF04"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag() { dataLayer.push(arguments); }
+	gtag('js', new Date());
+	gtag('config', 'G-KPTX5BDF04');
+</script>
 
 </html>
