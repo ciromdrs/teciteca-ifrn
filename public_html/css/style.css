@@ -3,7 +3,7 @@
 
 :root {
 	--rosa1: #a1346b;
-	--rosa2: #dc3166;
+	--rosa2: #CB3E62;
 	--rosa3: #ed426d;
 	--azul1: #020d35;
 	--azul2: #384968;
@@ -582,8 +582,9 @@ nav#footer p{
 }
 
 footer {
-	padding: 3em;
+	padding: 2em;
 	text-align: center;
+	vertical-align: bottom;
 }
 
 button.icon {

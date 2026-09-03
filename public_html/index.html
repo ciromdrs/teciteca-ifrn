@@ -27,6 +27,8 @@
     ================================================== -->
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/responsive.css">
+	<link rel="stylesheet" type="text/css" href="css/loading.css">
+
 
 	<link
 		href='https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic'
@@ -40,32 +42,79 @@
 	<style>
 		div.item-acervo {
 			margin: 1em;
-			max-width: 25vw;
 			vertical-align: top;
 			display: inline-block;
 			color: var(--azul2)
 		}
 
 		div.item-acervo img {
-			width: 25vw;
-			max-width: 12em;
-			min-width: 5em;
+			height: 100%;
+			max-height: 10em;
+			margin: 8px;
 		}
 
 		div.item-acervo p.caption {
 			font-weight: bold;
 			font-size: large;
 			overflow-wrap: break-word;
+			margin-top: 8px;
+			margin-bottom: 0px;
 		}
 
 		div.item-acervo p.desc {
 			font-size: normal;
 		}
 
-		div.coluna-alunos {
+		#div-projetos {
 			vertical-align: top;
-			display: inline-block;
 			margin: 2em;
+		}
+
+		div.projeto {
+			color: var(--azul2);
+			padding: 0px;
+			margin: 16px auto;
+			max-width: 750px;
+		}
+
+		div.projeto p {
+			margin: .5pt;
+		}
+
+		div.projeto h4 {
+			color: var(--rosa3);
+			margin-bottom: 1pt;
+			text-transform: none;
+			font-weight: bold;
+		}
+
+		div.projeto div.titulo {
+			color: white;
+			background-color: var(--rosa3);
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+			padding: 16px;
+			text-transform: none;
+		}
+
+		div.projeto div.titulo h3 {
+			margin: .5pt;
+		}
+
+		div.projeto div.corpo {
+			background-color: white;
+			border-bottom-left-radius: 8px;
+			border-bottom-right-radius: 8px;
+			padding: 16px;
+			text-transform: none;
+		}
+
+		div.projeto div.corpo div.participante {
+			margin-top: 5pt;
+		}
+
+		div.projeto div.corpo div.participante p.nome {
+			font-weight: bold;
 		}
 	</style>
 </head>
@@ -77,6 +126,12 @@
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
+				<a class="navbar-brand" href="index.html">
+					<img style="height: 100%; margin-right: 10px;" src="img/teciteca-logo-mono-small.png">
+				</a>
+				<a class="navbar-brand" href="index.html">
+					TeciTeca Virtual
+				</a>
 				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
 					data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span>
@@ -84,10 +139,6 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="https://portal.ifrn.edu.br/">
-					<img style="height: 100%;margin-right: 10px;" src="img/if-logo.png">
-				</a>
-				<a class="navbar-brand" href="index.html">TeciTeca Virtual</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -108,7 +159,7 @@
 	<div id="tf-home" class="text-center">
 		<div class="overlay">
 			<div class="content">
-				<h1>A Revolução <strong><span class="color">Têxtil Chegou!!</span></strong></h1>
+				<h1>A Revolução <strong><span class="color">Têxtil Chegou</span></strong></h1>
 				<p class="lead"><strong></strong></p>
 				<a href="#tf-about" class="fa fa-angle-down page-scroll"></a>
 			</div>
@@ -121,7 +172,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<img src="img/Resumo.png" class="img-responsive">
+					<img src="img/teciteca-logo.png" class="img-responsive" style="max-height: 512px; padding: 16px;">
 				</div>
 				<div class="col-md-6">
 					<div class="about-text">
@@ -168,13 +219,13 @@
 			<a href="https://www.youtube.com/channel/UCEbeeMSqjcP7jiYvYBuRX0Q">
 				<div class="item-acervo">
 					<img src="img/icon-youtube.png">
-					<p class="caption">VideoTeca Têxtil</p>
-					<p class="desc">Videos Interativos</p>
+					<p class="caption">Videoteca Têxtil</p>
+					<p class="desc">Videos</p>
 				</div>
 			</a>
 			<a href="https://open.spotify.com/show/62otApEqkKP4M6IreSrW6d">
 				<div class="item-acervo">
-					<img src="img/podcast.jpg">
+					<img src="img/spotify.png">
 					<p class="caption">Tecendo Comentários</p>
 					<p class="desc">Podcast</p>
 				</div>
@@ -189,8 +240,8 @@
 			<a href="https://drive.google.com/drive/folders/1dI2G6_o0qosRzDxEBddu7vEQlliIwPS1">
 				<div class="item-acervo">
 					<img src="img/material-didatico.png">
-					<p class="caption">Materiais Didáticos</p>
-					<p class="desc">Material Completo</p>
+					<p class="caption">Biblioteca Digital</p>
+					<p class="desc">Repositório Completo</p>
 				</div>
 			</a>
 		</div>
@@ -229,9 +280,8 @@
 				</div>
 
 				<div class="text-center">
-					<h2><strong>Servidores</strong></h2>
-					<div style="margin: 2em">
-						<div class="item" style="display: inline-block">
+					<div style="padding: auto 16px">
+						<div class="item" style="display: inline-block; width: 196pt">
 							<div class="thumbnail">
 								<img src="img/team/tatiana.png" alt="Coordenadora do projeto"
 									class="img-circle team-img">
@@ -242,22 +292,22 @@
 							</div>
 						</div>
 
-						<div class="item" style="display: inline-block">
-							<div class="thumbnail">
-								<img src="img/team/max-miller.jpg" alt="coorientador" class="img-circle team-img">
-								<div class="caption">
-									<h3>Max Miller</h3>
-									<p>Co-orientador</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="item" style="display: inline-block">
+						<div class="item" style="display: inline-block; width: 180pt">
 							<div class="thumbnail">
 								<img src="img/team/ciro-medeiros.jpeg" alt="integrante" class="img-circle team-img">
 								<div class="caption">
 									<h3>Ciro Medeiros</h3>
-									<p>Integrante</p>
+									<p>Desenvolvedor</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="item" style="display: inline-block; width: 196pt">
+							<div class="thumbnail">
+								<img src="img/team/maria-jose.jpeg" alt="Revisora Filológica e Linguística" class="img-circle team-img">
+								<div class="caption">
+									<h3>Maria José</h3>
+									<p>Revisora Filológica e Linguística</p>
 								</div>
 							</div>
 						</div>
@@ -266,53 +316,24 @@
 
 				<div>
 					<div class="text-center">
-						<h2><strong>Alunos</strong></h2>
+						<h2><strong>Projetos</strong></h2>
 					</div>
-					<ul id="lista-alunos" style="margin: 2em;">
-						<div class="coluna-alunos">
-							<li>Silvio Carlos<p>Integrante - Informática 2M 2015.1</p>
-							</li>
-							<li>Marcos Roberto<p>Integrante - Têxtil 1M 2015.1</p>
-							</li>
-							<li>Felipe Eduardo<p>Integrante - Têxtil 1M 2015.1</p>
-							</li>
-							<li>Samara Medeiros<p>Integrante - Têxtil 1M 2015.1</p>
-							</li>
-							<li>Lucas Gabriel<p>Integrante - Têxtil 1M 2015.1</p>
-							</li>
-							<li>Alessandra Lopes Garcia<p>Integrante - Têxtil 1M 2015.1</p>
-							</li>
-							<li>Edwiges Martins<p>Integrante - Têxtil 1M 2015.1</p>
-							</li>
-							<li>Igor Gomes<p>Integrante - Têxtil 1M 2015.1</p>
-							</li>
-							<li>Eduarda Ketlen<p>Integrante - Têxtil 1M 2015.1</p>
-							</li>
+					<div id="div-projetos">
+						<div class="lds-ring">
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
 						</div>
-						<div class="coluna-alunos">
-							<li>Ana Regina<p>Integrante - Têxtil 1M 2015.1</p>
-							</li>
-							<li>Horácio Estevão<p>Integrante - Têxtil 1M 2015.1</p>
-							</li>
-							<li>Wallace Wiallamy<p>Integrante - Têxtil 1M 2015.1</p>
-							</li>
-							<li>Lucas Gabriel<p>Bolsista</p>
-							</li>
-							<li>Uirison Menezes de Melo<p>Integrante</p>
-							</li>
-							<li>Isadora Rodriguez<p>Integrante</p>
-							</li>
-							<li>Leônidas Miguel bisneto<p>Integrante</p>
-							</li>
-							<li>Marcos Aurélio<p>Integrante - Têxtil 1M 2015.1</p>
-							</li>
-						</div>
-					</ul>
+					</div>
 				</div>
 			</div>
 
 			<footer>
-				Desenvolvido pelo IFRN
+				<p>Desenvolvido pelo</p>
+				<a href="https://portal.ifrn.edu.br/campus/caico/">
+					<img style="vertical-align: baseline; height: 96pt" src="img/if-logo.png">
+				</a>
 			</footer>
 		</div>
 	</div>
@@ -342,6 +363,61 @@
 	function gtag() { dataLayer.push(arguments); }
 	gtag('js', new Date());
 	gtag('config', 'G-KPTX5BDF04');
+</script>
+
+<!-- Importação dos participantes dos projetos -->
+<script src="js/planilhas.js"></script>
+<script>
+	// Função auxiliar para criar elementos mais facilmente
+	function newElement(tag, className='', children=[]) {
+		const e = document.createElement(tag)
+		e.className = className
+		for (const c of children)
+			e.append(c)
+		return e
+	}
+
+	let divAlunos = document.getElementById('div-projetos')
+	getProjetos().then(
+		(projetos) => {
+			// Remove os filhos da div
+			while (divAlunos.lastElementChild)
+				divAlunos.removeChild(divAlunos.lastElementChild);
+			// Cria os novos filhos da div (projetos)
+			for (const k in projetos) {
+				const p = projetos[k]
+				// Transforma as datas de início e fim em uma string amigável
+				let periodo = ''
+				if (p.inicio !== null)
+					periodo = `${p.inicio} - `
+				if (p.fim !== null)
+					periodo += p.fim
+				else
+					periodo += 'em andamento'
+				// Constrói a div
+				divAlunos.appendChild(
+					newElement('div', 'projeto', [
+						newElement('div', 'titulo', [
+							newElement('h3', '', [p.titulo]),
+							newElement('p', 'area', [`Projeto de ${p.area}`]),
+							newElement('p', 'periodo', [periodo]),
+						]),
+						newElement('div', 'corpo', [
+						newElement('h4', '', ['Participantes']),
+						newElement('div', '',
+							p.membros.map((m) => newElement('div', 'participante', [
+								newElement('p', 'nome', [m.nome]),
+								newElement('p', 'vinculo', [m.vinculo]),
+								newElement('p', 'curso_area_disciplina', [m.curso_area_disciplina])]))
+						)])]))
+			}
+		}
+	).catch(
+		(err) => {
+			divAlunos.innerHTML = 'Erro ao carregar os dados. Atualize a página.'
+			console.error(err)
+		}
+	)
 </script>
 
 </html>
