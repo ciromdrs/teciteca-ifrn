@@ -212,23 +212,29 @@ function TeamSection({ projects, error }) {
           </div>
           <SecaoProjetos projetos={projects} error={error} />
         </div>
-        <footer className="site-footer">
-          <p>Desenvolvido pelo</p>
-          <a href="https://portal.ifrn.edu.br/campus/caico/" aria-label="IFRN Campus Caicó">
-            <img src="./img/if-logo.png" alt="Instituto Federal do Rio Grande do Norte, Campus Caicó" />
-          </a>
-        </footer>
+        <Rodape />
       </div>
     </section>
   );
 }
 
-function SecaoProjetos({ projetos: projects, error }) {
+function Rodape() {
+  return (
+    <footer className="site-footer">
+      <p>Desenvolvido pelo</p>
+      <a href="https://portal.ifrn.edu.br/campus/caico/" aria-label="IFRN Campus Caicó">
+        <img src="./img/if-logo.png" alt="Instituto Federal do Rio Grande do Norte, Campus Caicó" />
+      </a>
+    </footer>
+  )
+}
+
+function SecaoProjetos({ projetos, error }) {
   return <div className="projects-section">
     <div className="text-center projects-heading"><h2><strong>Projetos</strong></h2></div>
-    {projects ? (
-      projects.length > 0
-        ? <div id="div-projetos">{projects.map((project) => (
+    {projetos ? (
+      projetos.length > 0
+        ? <div id="div-projetos">{projetos.map((project) => (
           <ProjectCard key={project.id} project={project} to={`/projetos/${encodeURIComponent(project.id)}`} />
         ))}</div>
         : <p className="empty-projects">Nenhum projeto disponível.</p>
