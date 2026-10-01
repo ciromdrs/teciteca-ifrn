@@ -1,9 +1,11 @@
 // Configuração
 const SPREADSHEET_ID = '1zZapwRybvNPqTKADuvYAq4jHZWHywH8w';
-const SHEET_NAME = 'export'; // Nome da aba
-const url = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json&sheet=${SHEET_NAME}`;
+const base_url = new URL(`https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:json`);
 
-async function getSheetData() {
+async function fetchSheetData(sheet_name) {
+	// Copia a URL base para alterar a cópia
+	const url = new URL(base_url)
+	url.searchParams.append('sheet', sheet_name);
     const response = await fetch(url);
     const text = await response.text();
     
@@ -24,35 +26,35 @@ async function getSheetData() {
 }
 
 async function getProjetos() {
-	return getSheetData().then(
+	return fetchSheetData('Projetos').then(
 		(data) => {
 			let projetos = {}
-			data.forEach((element, i) => {
+			data.slice(2).forEach((element, i) => {
 				if (!element) {
 					console.warn(`Elemento inválido: ${i} ${element}`)
 					return
 				}
-				if (!element[2]) {
-					console.warn(`Elemento inválido: (${i}) ${element}`)
-					return
+				let p = {
+					id: element[0],
+					inicio: element[1],
+					fim: element[2],
+					titulo: element[3],
+					area: element[4],
+					resumo: element[5],
+					membros: []
 				}
-				let titulo = element[2]
-				if (!(titulo in projetos)) {
-					let p = { titulo }
-					p.inicio = element[0]
-					p.fim = element[1]
-					p.area = element[3]
-					p.membros = []
-					projetos[titulo] = p
-				}
-				let m = {
-					nome: element[4],
-					vinculo: element[5],
-					curso_area_disciplina: element[6],
-				}
-				projetos[titulo].membros.push(m)
+				projetos[p.id] = p
 			});
 			return projetos;
+		}
+    )
+}
+
+async function getSobre() {
+	return fetchSheetData('Home').then(
+		(data) => {
+			const sobre = data[1];
+			return sobre;
 		}
     )
 }

@@ -181,24 +181,13 @@
 							<hr>
 							<div class="clearfix"></div>
 						</div>
-
-						<div style="text-align: justify;">
-							<p class="intro">A Teciteca Virtual é um espaço que compreende um conjunto organizado e
-								catalogado de
-								materiais têxteis em formato digital e diversos outros assuntos relacionados à área,
-								podendo ser acessado de qualquer dispositivo com acesso à internet. O site pode ser
-								usado como um espaço de ensino e aprendizagem para a academia, pois pode ser utilizado
-								como ferramenta por professores da área têxtil e do vestuário em suas aulas, bem como
-								pode ser usada como fonte de pesquisa pelos alunos dos cursos técnicos e de ensino
-								superior. O site da Teciteca Virtual começou a ser desenvolvido em 2015 no projeto de
-								pesquisa de mesmo nome. As pesquisas foram iniciadas e alguns bancos de dados foram
-								finalizados, tais como fichas técnicas de fibras têxteis, glossário de termos técnicos e
-								cartilha de cuidados de conservação de roupas. Espera-se desenvolver durante o projeto
-								integrador a videoteca têxtil, com vídeos que demonstram didaticamente os processos
-								têxteis; a catalogação de tecidos; a catalogação de aviamentos; a catalogação das
-								empresas da região. Além disso, espera-se finalizar o site, tornando-o mais limpo e com
-								uma melhor visualização.
-							</p>
+						<div id="div-sobre">
+							<div class="lds-ring">
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -377,12 +366,17 @@
 		return e
 	}
 
-	let divAlunos = document.getElementById('div-projetos')
+	// Função auxiliar para remover os filhos de um elemento.
+	function removeChildren(parent) {
+		while (parent.lastElementChild)
+			parent.removeChild(parent.lastElementChild);
+	}
+
+	const divAlunos = document.getElementById('div-projetos');
 	getProjetos().then(
 		(projetos) => {
 			// Remove os filhos da div
-			while (divAlunos.lastElementChild)
-				divAlunos.removeChild(divAlunos.lastElementChild);
+			removeChildren(divAlunos);
 			// Cria os novos filhos da div (projetos)
 			for (const k in projetos) {
 				const p = projetos[k]
@@ -403,12 +397,8 @@
 							newElement('p', 'periodo', [periodo]),
 						]),
 						newElement('div', 'corpo', [
-						newElement('h4', '', ['Participantes']),
 						newElement('div', '',
-							p.membros.map((m) => newElement('div', 'participante', [
-								newElement('p', 'nome', [m.nome]),
-								newElement('p', 'vinculo', [m.vinculo]),
-								newElement('p', 'curso_area_disciplina', [m.curso_area_disciplina])]))
+							p.resumo
 						)])]))
 			}
 		}
@@ -418,6 +408,19 @@
 			console.error(err)
 		}
 	)
+
+	const divSobre = document.getElementById('div-sobre');
+	getSobre().then(
+		(resumo) => {
+			removeChildren(divSobre);
+			divSobre.innerText = resumo;
+		}
+	).catch(
+		(err) => {
+			divAlunos.innerHTML = 'Erro ao carregar. Atualize a página.'
+			console.error(err)
+		}
+	);
 </script>
 
 </html>
