@@ -210,16 +210,7 @@ function TeamSection({ projects, error }) {
               </article>
             ))}
           </div>
-          <div className="projects-section">
-            <div className="text-center projects-heading"><h2><strong>Projetos</strong></h2></div>
-            {projects ? (
-              projects.length > 0
-                ? <div id="div-projetos">{projects.map((project) => (
-                  <ProjectCard key={project.id} project={project} to={`/projetos/${encodeURIComponent(project.id)}`} />
-                ))}</div>
-                : <p className="empty-projects">Nenhum projeto disponível.</p>
-            ) : <LoadingStatus error={error} />}
-          </div>
+          <SecaoProjetos projetos={projects} error={error} />
         </div>
         <footer className="site-footer">
           <p>Desenvolvido pelo</p>
@@ -230,6 +221,19 @@ function TeamSection({ projects, error }) {
       </div>
     </section>
   );
+}
+
+function SecaoProjetos({ projetos: projects, error }) {
+  return <div className="projects-section">
+    <div className="text-center projects-heading"><h2><strong>Projetos</strong></h2></div>
+    {projects ? (
+      projects.length > 0
+        ? <div id="div-projetos">{projects.map((project) => (
+          <ProjectCard key={project.id} project={project} to={`/projetos/${encodeURIComponent(project.id)}`} />
+        ))}</div>
+        : <p className="empty-projects">Nenhum projeto disponível.</p>
+    ) : <LoadingStatus error={error} />}
+  </div>
 }
 
 function HomePage({ about, projects, dataError }) {
