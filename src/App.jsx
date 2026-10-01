@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Link, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { fetchAbout, fetchProjects } from './spreadsheets.js';
 
 const collection = [
@@ -57,17 +58,18 @@ const sections = [
   ['equipe', 'Equipe'],
 ];
 
-function SiteNavigation({ scrolled }) {
+function SiteNavigation({ scrolled, projectPage = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const sectionHref = (id) => projectPage ? `/#${id}` : `#${id}`;
 
   return (
     <nav id="tf-menu" className={`navbar navbar-default navbar-fixed-top${scrolled ? ' on' : ''}`}>
       <div className="container">
         <div className="navbar-header">
-          <a className="navbar-brand brand-logo" href="#tf-home" aria-label="TeciTeca Virtual, início">
-            <img src="./img/teciteca-logo-mono-small.png" alt="" />
+          <a className="navbar-brand brand-logo" href={sectionHref('tf-home')} aria-label="TeciTeca Virtual, início">
+            <img src="/img/teciteca-logo-mono-small.png" alt="" />
           </a>
-          <a className="navbar-brand brand-name" href="#tf-home">TeciTeca Virtual</a>
+          <a className="navbar-brand brand-name" href={sectionHref('tf-home')}>TeciTeca Virtual</a>
           <button
             className="navbar-toggle"
             type="button"
@@ -84,7 +86,7 @@ function SiteNavigation({ scrolled }) {
           <ul className="nav navbar-nav navbar-right">
             {sections.map(([id, label]) => (
               <li key={id}>
-                <a href={`#${id}`} onClick={() => setMenuOpen(false)}>{label}</a>
+                <a href={sectionHref(id)} onClick={() => setMenuOpen(false)}>{label}</a>
               </li>
             ))}
           </ul>
@@ -138,10 +140,10 @@ function AboutSection({ about, error }) {
   );
 }
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, to }) {
   const period = `${project.inicio == null ? '' : `${project.inicio} - `}${project.fim ?? 'em andamento'}`;
 
-  return (
+  const card = (
     <article className="projeto">
       <header className="titulo">
         <h3>{project.titulo}</h3>
@@ -164,6 +166,29 @@ function ProjectCard({ project }) {
         )}
       </div>
     </article>
+  );
+
+  return to ? <Link className="project-link" to={to}>{card}</Link> : card;
+}
+
+function ProjectDetail({ projects, error }) {
+  const { id: projectId } = useParams();
+  const project = projects?.find((item) => String(item.id) === projectId);
+
+  return (
+    <section className="project-detail-section">
+      <div className="container">
+        <a className="project-back" href="/#equipe">&larr; Voltar aos projetos</a>
+        {projects === null ? <LoadingStatus error={error} /> : project ? (
+          <ProjectCard project={project} />
+        ) : (
+          <div className="project-not-found">
+            <h1>Projeto não encontrado</h1>
+            <p>O projeto solicitado não está disponível.</p>
+          </div>
+        )}
+      </div>
+    </section>
   );
 }
 
@@ -189,7 +214,9 @@ function TeamSection({ projects, error }) {
             <div className="text-center projects-heading"><h2><strong>Projetos</strong></h2></div>
             {projects ? (
               projects.length > 0
-                ? <div id="div-projetos">{projects.map((project) => <ProjectCard key={project.id} project={project} />)}</div>
+                ? <div id="div-projetos">{projects.map((project) => (
+                  <ProjectCard key={project.id} project={project} to={`/projetos/${encodeURIComponent(project.id)}`} />
+                ))}</div>
                 : <p className="empty-projects">Nenhum projeto disponível.</p>
             ) : <LoadingStatus error={error} />}
           </div>
@@ -205,7 +232,46 @@ function TeamSection({ projects, error }) {
   );
 }
 
-export default function App() {
+function HomePage({ about, projects, dataError }) {
+  return (
+    <main>
+      <section id="tf-home" className="text-center">
+        <div className="overlay">
+          <div className="content">
+            <h1>A Revolução <strong><span className="color">Têxtil Chegou</span></strong></h1>
+            <a href="#tf-about" className="fa fa-angle-down page-scroll" aria-label="Conheça a TeciTeca" />
+          </div>
+        </div>
+      </section>
+      <AboutSection about={about} error={dataError} />
+      <section id="materiais" className="text-center container">
+        <SectionTitle centered>Acervo</SectionTitle>
+        <div className="collection-grid">
+          {collection.map((item) => (
+            <a className="item-acervo" href={item.href} key={item.title} target="_blank" rel="noreferrer">
+              <img src={`/img/${item.image}`} alt="" />
+              <p className="caption">{item.title}</p>
+              <p className="desc">{item.description}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+      <section id="contato" className="text-center">
+        <div className="container">
+          <SectionTitle centered>Contato</SectionTitle>
+          <a className="contact-link" href="mailto:teciteca@ifrn.edu.br">
+            <img src="./img/email.png" alt="" />
+            <span>teciteca@ifrn.edu.br</span>
+          </a>
+        </div>
+      </section>
+      <TeamSection projects={projects} error={dataError} />
+    </main>
+  );
+}
+
+function AppRoutes() {
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [about, setAbout] = useState(null);
   const [projects, setProjects] = useState(null);
@@ -242,40 +308,20 @@ export default function App() {
 
   return (
     <>
-      <SiteNavigation scrolled={scrolled} />
-      <main>
-        <section id="tf-home" className="text-center">
-          <div className="overlay">
-            <div className="content">
-              <h1>A Revolução <strong><span className="color">Têxtil Chegou</span></strong></h1>
-              <a href="#tf-about" className="fa fa-angle-down page-scroll" aria-label="Conheça a TeciTeca" />
-            </div>
-          </div>
-        </section>
-        <AboutSection about={about} error={dataError} />
-        <section id="materiais" className="text-center container">
-          <SectionTitle centered>Acervo</SectionTitle>
-          <div className="collection-grid">
-            {collection.map((item) => (
-              <a className="item-acervo" href={item.href} key={item.title} target="_blank" rel="noreferrer">
-                <img src={`./img/${item.image}`} alt="" />
-                <p className="caption">{item.title}</p>
-                <p className="desc">{item.description}</p>
-              </a>
-            ))}
-          </div>
-        </section>
-        <section id="contato" className="text-center">
-          <div className="container">
-            <SectionTitle centered>Contato</SectionTitle>
-            <a className="contact-link" href="mailto:teciteca@ifrn.edu.br">
-              <img src="./img/email.png" alt="" />
-              <span>teciteca@ifrn.edu.br</span>
-            </a>
-          </div>
-        </section>
-        <TeamSection projects={projects} error={dataError} />
-      </main>
+      <SiteNavigation scrolled={scrolled} projectPage={location.pathname.startsWith('/projetos/')} />
+      <Routes>
+        <Route path="/" element={<HomePage about={about} projects={projects} dataError={dataError} />} />
+        <Route path="/projetos/:id" element={<ProjectDetail projects={projects} error={dataError} />} />
+        <Route path="*" element={<HomePage about={about} projects={projects} dataError={dataError} />} />
+      </Routes>
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <AppRoutes />
+    </Router>
   );
 }
